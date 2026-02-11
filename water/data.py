@@ -45,20 +45,3 @@ print(final_summary)
 
 # Save to the same folder as your script
 final_summary.to_csv('cleaned.csv', index=False)
-
-
-# 3. Create the Bar Chart
-# Note: We use bar() directly and savefig() as per your requirements
-plt.bar(final_summary['DISCHARGE_TYPE'], final_summary['Reuse_Volume'], color='teal')
-
-# 4. Add labels and title
-plt.xlabel('DISCHARGE Type', fontsize=12)
-plt.ylabel('Total Reuse Volume', fontsize=12)
-plt.title('Total Reuse Volume by DISCHARGE Type', fontsize=14)
-
-# 5. Rotate the x-axis labels so they don't overlap
-plt.xticks(rotation=45, ha='right')
-
-# 6. Adjust layout and save the image
-plt.tight_layout()
-plt.savefig('reuse_volume_summary.png')
