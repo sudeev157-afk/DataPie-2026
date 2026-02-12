@@ -34,14 +34,25 @@ merged_df['PRESENT_DISCHARGE_PERCENTAGE'] = pd.to_numeric(merged_df['PRESENT_DIS
 merged_df['Reuse_Volume'] = merged_df['CURRENT_DESIGN_FLOW'] * (merged_df['PRESENT_DISCHARGE_PERCENTAGE'] / 100)
 #print(merged_df[['CURRENT_DESIGN_FLOW', 'PRESENT_DISCHARGE_PERCENTAGE', 'Reuse_Volume']].describe())
 print(merged_df[['CURRENT_DESIGN_FLOW', 'PRESENT_DISCHARGE_PERCENTAGE', 'Reuse_Volume']])
-print(merged_df['DISCHARGE_TYPE'].unique())
+#print(merged_df['DISCHARGE_TYPE'].unique())
+
+merged_df.to_csv('water_data.csv', index=False)
 
 # Group by the existing labels and sum the volume 
-final_summary = merged_df.groupby('DISCHARGE_TYPE')['Reuse_Volume'].sum().reset_index()
+#final_summary = merged_df.groupby('DISCHARGE_TYPE')['Reuse_Volume'].sum().reset_index()
 
 # Sort by volume so the biggest categories are at the top
-final_summary = final_summary.sort_values(by='Reuse_Volume', ascending=False)
-print(final_summary)
+#final_summary = final_summary.sort_values(by='Reuse_Volume', ascending=False)
+#print(final_summary)
+
+# Create a 'Total' row
+#total_row = pd.DataFrame({
+    #'DISCHARGE_TYPE': ['Total'], 
+   # 'Reuse_Volume': [final_summary['Reuse_Volume'].sum()]})
+
+# Append the total row to the bottom
+#final_summary = pd.concat([final_summary, total_row], ignore_index=True)
+#print(final_summary)
 
 # Save to the same folder as your script
-final_summary.to_csv('cleaned.csv', index=False)
+#final_summary.to_csv('cleaned.csv', index=False)
